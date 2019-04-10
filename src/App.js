@@ -7,37 +7,44 @@ class App extends Component {
 		constructor(props) {
 			super(props);
 			this.state = {
-				shown: true,
 				items: [],
 				isLoaded: false,
 			}
 		}
-
 		componentDidMount(){
 			fetch('http://www.mocky.io/v2/5c9cdca03300004d003f2151')
 			.then(res => res.json())
 			.then(json => {
+				let meetings = []
+				json.forEach(meeting => {
+					if(new Date(meeting.startDate).getDay() !== new Date(meeting.endDate).getDay()){
+						let day1 = {
+							activity:meeting.activity,
+							location:meeting.location,
+							startDate:meeting.startDate,
+						}
+						let day2 = {
+							activity:meeting.activity,
+							location:meeting.location,
+							endDate:meeting.endDate,
+						}
+				
+						meetings.push(day1,day2)
+				
+					}else{
+						meetings.push(meeting)
+					}
+					
+				});
+				console.log(meetings)
 				this.setState({
 					isLoaded:true,
-					items: json,
+					items: meetings,
 				})
 			});
 		}
 
-		toggle() {
-			this.setState({
-				shown: !this.state.shown
-			});
-		}
-
   render() {
-			var shown = {
-				display: this.state.shown ? "block" : "none"
-			};
-
-			var hidden = {
-				display: this.state.shown ? "none" : "block"
-			}
 
 		var { isLoaded, items } = this.state;
 
@@ -47,29 +54,43 @@ class App extends Component {
 		else {
 
     return (
+			<>
       <div className="App">
 				<div className="AppHeader">
 					<h1>Boka ditt möte nedan</h1>
 				</div>
         <ul>
-					{items.map(item => (
-						<li key={item.id} style={shown}> 
-							<button className="select" style={ shown }> 
+					{items.map((item,i) => (
+						<li key={i}>
+							<button className="select">
 							{item.activity}<br/>
 							Starttid: {item.startDate}<br/>
 							Sluttid: {item.endDate}<br/> 
 							Plats: {item.location}<br/>
-						</button>
+							</button>
 						</li>
 					))}
 					</ul>
-				{/* visas inte innan möte valts */}
-					<button className="saveBooking" style={hidden}></button> 
+	
       </div>
+			
+		<div className="selectedMeeting">Fyll i dina uppgifter och bekräfta</div>
+			
+				<form className="bookingSection">
+					<label>
+						Name:
+						<input type="text" name="name" />
+					</label>
+					<label>
+						E-mail:
+						<input type="text" email="email" />
+					</label>
+					<input className="confirm" type="submit" value="Bekräfta" />
+				</form>
+				</>
     );
 	}
 }
 }
-
 
 export default App;

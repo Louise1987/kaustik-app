@@ -18,13 +18,30 @@ li{
 	border-radius:10px;
 }
 
-.saveBooking{
-	color:#ffffff;
-	background-color:green;
-	width: 80px;
-	height: 50px;
-	border-radius:20px;
+.selectedMeeting{
+	text-align: center;
+	margin-bottom:20px;
 }
+
+.bookingSection{
+	display: flex;
+	flex-direction:column;
+	margin:auto;
+	width: 40%;
+	margin:auto;
+	text-align: center;
+}
+
+.confirm{
+	background: #49bc4b;
+	color:#ffffff;
+	font-size: 20px;
+	padding:20px;
+	border-radius: 20px;
+	text-align: center;
+	margin-top:20px;
+}
+
 
 
 
