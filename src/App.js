@@ -69,9 +69,7 @@ class App extends Component {
 
 	
 
-  render: function() {
-
-		let items = this.props.items;
+  render() {
 
 		var { isLoaded, items } = this.state;
 
@@ -88,12 +86,9 @@ class App extends Component {
 					
 				</div>
         <ul>
-					{() =>{
-					{items.map((item) => (
-						let boundItemClick = this.onItemClick.bind(this, item);
-						return
-						<li key={item.id} onClick={boundItemClick}>
-							{items.title}
+							
+					{items.map((item,i) => (
+						<li key={i}>
 							<button className="select">
 							{item.activity}<br/>
 							Starttid: {item.startDate}<br/>
@@ -101,14 +96,12 @@ class App extends Component {
 							Plats: {item.location}<br/>
 							</button>
 						</li>
-					});
-					}()}
+					))}
 					
 					</ul>
 				
       </div>
-			onItemClick: function(item, e){
-				console.log(item);
+		
 			}
 			
 		<div className="selectedMeeting">Fyll i dina uppgifter och bekräfta</div>
