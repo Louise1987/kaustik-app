@@ -5,6 +5,8 @@
 ul{
 	display:flex;
 	flex-wrap:wrap;
+	position: inherit;
+	margin-left:20%;
 }
 
 li{
