@@ -3,15 +3,6 @@ import './App.css';
 import firebase from 'firebase';
 const uuid = require('uuid');
 
-
-// firebase.auth().currentUser.getIdToken()
-//   .then((idToken) => {
-//     // idToken can be passed back to server.
-//   })
-//   .catch((error) => {
-//     // Error occurred.
-//   });
-
 class App extends Component {
 	
 		constructor(props) {
@@ -45,20 +36,28 @@ class App extends Component {
 			// Instans för att skriva data till och från databas
 			// skapar databasen lokalt med referens ref
 			var database = firebase.database();
-			var ref = database.ref('meeting');
+			var ref = database.ref('Newdata');
 
-			// variabel data med sträng id
+			// variabel data med sträng
 			var data ={
-				id: '',
+				test:'',
 			}
 			// Pushar upp data till databas
-			ref.push(data);
+			 ref.push(data);
+
+				// import firebase och ref sträng
+				firebase
+				.database()
+				.ref(`Newdata/${this.state.uid}`)
+				.on('value', snap => console.log('from db', snap.val()));
 		}
 		
 		// hämtar klick för mötes knappar och skriver ut text i knappar
-		handleClick = (e) =>{
-			console.log(e.target.innerHTML);
-			alert('Du har valt ett möte');
+		handleClick(item){
+			// console.log(e.target.innerHTML);
+			// alert('Du har valt ett möte');
+			const date = item;
+			this.setState({date});
 		}
 
 		// hämtar API för olika möten 
@@ -80,36 +79,28 @@ class App extends Component {
 							endDate:meeting.endDate,
 						}
 				
+						
+
 						meetings.push(day1,day2)
 
-				
-				
 					}else{
 						meetings.push(meeting)
 					}
-			
 
 				});
-				console.log(meetings)
+				// console.log(meetings)
 				this.setState({
 					isLoaded:true,
 					items: meetings,
+					
 				})
 			});
 
-			// import firebase och ref sträng
-			firebase
-			.database()
-			.ref(`Newdata/${this.state.uid}`)
-			.on('value', snap => console.log('from db', snap.val()));
 		}
-
-
 		// hämtar ny data 
 		handleChange(e){
 		this.setState({
-			name: e.target.name});
-			
+			name: e.target.name});		
 	}
 
 	// hämtar ref och skriver ut sträng med set till firebase
@@ -121,59 +112,60 @@ class App extends Component {
 		.database()
 		.ref(`Newdata/${this.state.uid}`)
 		.set({
-			meeting: this.state.meeting,
 			name: this.state.name,
 			email: this.state.email,
+			date: this.state.date,
 		})
 		.catch(error => console.log(error));
 	}
 
 // knyter input text till property
 	inputData (_e){
-		const meeting = this.refs.meeting1.value;
 		const name = this.refs.name1.value;
 		const email = this.refs.email1.value;
-		this.setState({ meeting, name, email});
-	}
 
-  render() {
+		this.setState({ name, email});
+	}
+	
+
+  render() { 
 
 		var { isLoaded, items } = this.state;
-
 		if (!isLoaded){
 			return <div>Loading...</div>;
 		}
 		else {
-
     return (
 			<>
       <div className="App">
 				<div className="AppHeader">
 					<h1>Boka ditt möte nedan</h1>
-					
 				</div>
-        <ul>
-				
-					{items.map((item,i) => (
-						<li key={i}>
-
-					{/* kopplar handleClick till onChange*/}
-							<button onClick={(e) => this.handleClick(e)} onChange={this.inputData} ref="meeting1" className="select">
-							{item.activity}<br/>
-							Starttid: {item.startDate}<br/>
-							Sluttid: {item.endDate}<br/> 
-							Plats: {item.location}<br/>
-							</button>
-						</li>
-					))}
-					
-					</ul>
+    
 				
       </div>
 
 		<div className="selectedMeeting">Fyll i dina uppgifter och bekräfta</div>
 			
 				<form onSubmit={this.handleSubmit} className="bookingSection">
+				<ul>
+					
+				
+					{items.map((item,i) => (
+						<li key={i}>
+
+					{/* kopplar handleClick till onChange*/}
+							<input type="radio" onClick={(e) => this.handleClick(item)} name="[date]" ref="activity" className="select"/>
+							<label>
+							{item.activity}<br/>
+							Starttid: {item.startDate}<br/>
+							Sluttid: {item.endDate}<br/> 
+							Plats: {item.location}<br/>
+							</label>
+						</li>
+					))}
+					
+					</ul>
 					<label>
 						Name:
 						<input type="text" value={this.state.name} onChange={this.inputData}
