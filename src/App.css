@@ -6,14 +6,14 @@ body{
 	text-align: center;
 }
 
-ul{
+.list-block{
 	display:flex;
 	flex-wrap:wrap;
 	position: inherit;
-	margin-left:20%;
+	width:100%;
 }
 
-li{
+.list-block_item{
 	list-style:none;
 	margin:20px;
 	background-color: rgb(255, 255, 255);
@@ -22,51 +22,64 @@ li{
 	font-family: 'Roboto', sans-serif;
 }
 
-.select{
+.input-block{
+	text-align: center;
+}
+
+.input-block_select{
 	background-color: #7880ab;
 	color:#ffffff;
 	border-radius:10px;
 }
 
-.selectedMeeting{
+.header-block_text{
 	text-align: center;
 	margin-bottom:20px;
 	font-family: 'Roboto', sans-serif;
 }
 
-.bookingForm{
+.booking-form_block{
 	width:80%;
 }
 
-.bookingSection{
-	display: flex;
-	flex-direction:column;
-	width: 100%;
-	margin:auto;
+.bookingInput{
+	width:100%;
 	text-align: center;
 }
 
-.confirm{
-	background: #49bc4b;
-	color:#ffffff;
-	font-size: 20px;
-	padding:20px;
-	border-radius: 20px;
-	text-align: center;
-	margin-top:20px;
-	width:40%;
-	position: inherit;
-	margin-left:27%;
+@media screen and (max-width: 300) {
+	.bookingSection{
+		display: flex;
+		flex-direction:column;
+		width: 50%;
+		margin:auto;
+		text-align: center;
+	}
 }
 
-.header-title{
+
+	.input-block_confirm{
+		background: #49bc4b;
+		color:#ffffff;
+		font-size: 20px;
+		padding:20px;
+		border-radius: 20px;
+		margin-top:20px;
+		margin-left:35%;
+		text-align: center;
+	}	
+
+
+.header-block_title{
 	font-family: 'Roboto', sans-serif;
 }
 
 label{
 	font-family: 'Roboto', sans-serif;
-	position: inherit;
+
 }
+
+
 
 
 

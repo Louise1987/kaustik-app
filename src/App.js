@@ -140,25 +140,23 @@ class App extends Component {
 			<>
       <div className="App">
 				<div className="AppHeader">
-					<h1 class="header-title">Boka ditt möte nedan</h1>
+					<h1 class="header-block_title">Boka ditt möte nedan</h1>
 				</div>
     
 				
       </div>
 
-		<div className="selectedMeeting">Fyll i dina uppgifter och bekräfta</div>
+		<div className="header-block_text">Fyll i dina uppgifter och bekräfta</div>
 
-		<div class="bookingForm">
+		<div className="booking-form_block">
 			
 				<form onSubmit={this.handleSubmit} className="bookingSection">
-				<ul>
-					
-				
+				<ul class="list-block">
 					{items.map((item,i) => (
-						<li key={i}>
+						<li className="list-block_item" key={i}>
 
 					{/* kopplar handleClick till onChange*/}
-							<input type="radio" onClick={(e) => this.handleClick(item)} name="[date]" ref="activity" className="select"/>
+							<input className="input-block_select" type="radio" onClick={(e) => this.handleClick(item)} name="[date]" ref="activity" />
 							<label>
 							{item.activity}<br/>
 							Starttid: {item.startDate}<br/>
@@ -168,22 +166,23 @@ class App extends Component {
 						</li>
 					))}
 					
-					</ul>
-					<label>
-						Name:
-						<input type="text" value={this.state.name} onChange={this.inputData}
+					</ul >
+					<div className="input-block">
+					<label >
+						<input className="input-block_item" type="text" value={this.state.name} onChange={this.inputData} placeholder="Namn"
 						ref="name1"/>
 					</label>
 					<br/>
 					<label>
-						E-mail:
-						<input type="text" value={this.state.email} onChange={this.inputData}
+						<input className="input-block_item" type="text" value={this.state.email} onChange={this.inputData} placeholder="E-mail"
 						ref="email1"/>
 					</label>
-					<input className="confirm" type="submit" value="Bekräfta" />
+					</div>
+					<input className="input-block_confirm" type="submit" value="Bekräfta" />
 				</form>
-				<div className="viewSelect"></div>
-				</div>
+				
+		</div>
+				
 				</>
     );
 	}
