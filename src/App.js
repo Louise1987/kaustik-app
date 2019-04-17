@@ -107,6 +107,7 @@ class App extends Component {
 	handleSubmit(e){
 		alert('Er bokning är bekräftad: ' + this.state.value);
 		console.log('Du har bekräftat er bokning')
+		window.location.reload();
 		e.preventDefault();
 		firebase
 		.database()
@@ -139,13 +140,15 @@ class App extends Component {
 			<>
       <div className="App">
 				<div className="AppHeader">
-					<h1>Boka ditt möte nedan</h1>
+					<h1 class="header-title">Boka ditt möte nedan</h1>
 				</div>
     
 				
       </div>
 
 		<div className="selectedMeeting">Fyll i dina uppgifter och bekräfta</div>
+
+		<div class="bookingForm">
 			
 				<form onSubmit={this.handleSubmit} className="bookingSection">
 				<ul>
@@ -171,6 +174,7 @@ class App extends Component {
 						<input type="text" value={this.state.name} onChange={this.inputData}
 						ref="name1"/>
 					</label>
+					<br/>
 					<label>
 						E-mail:
 						<input type="text" value={this.state.email} onChange={this.inputData}
@@ -179,6 +183,7 @@ class App extends Component {
 					<input className="confirm" type="submit" value="Bekräfta" />
 				</form>
 				<div className="viewSelect"></div>
+				</div>
 				</>
     );
 	}
