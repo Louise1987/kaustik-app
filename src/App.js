@@ -19,6 +19,7 @@ class App extends Component {
 			this.handleClick = this.handleClick.bind(this);
 			this.handleChange = this.handleChange.bind(this);
 			this.handleSubmit = this.handleSubmit.bind(this);
+			this.handleSearch = this.handleChange.bind(this);
 			this.inputData = this.inputData.bind(this);
 
 			// kopplar databas
@@ -78,8 +79,6 @@ class App extends Component {
 							location:meeting.location,
 							endDate:meeting.endDate,
 						}
-				
-						
 
 						meetings.push(day1,day2)
 
@@ -124,10 +123,12 @@ class App extends Component {
 	inputData (_e){
 		const name = this.refs.name1.value;
 		const email = this.refs.email1.value;
-
 		this.setState({ name, email});
 	}
-	
+
+	handleSearch(e){
+
+	}
 
   render() { 
 
@@ -140,23 +141,21 @@ class App extends Component {
 			<>
       <div className="App">
 				<div className="AppHeader">
-					<h1 class="header-block_title">Boka ditt möte nedan</h1>
+					<h1 className="header-block__title">Boka ditt möte nedan</h1>
 				</div>
     
 				
       </div>
 
-		<div className="header-block_text">Fyll i dina uppgifter och bekräfta</div>
-
-		<div className="booking-form_block">
+		<div className="booking-block__form">
 			
-				<form onSubmit={this.handleSubmit} className="bookingSection">
-				<ul class="list-block">
+				<form onSubmit={this.handleSubmit} className="booking-form-block__select">
+				<ul className="list-block">
 					{items.map((item,i) => (
 						<li className="list-block_item" key={i}>
 
 					{/* kopplar handleClick till onChange*/}
-							<input className="input-block_select" type="radio" onClick={(e) => this.handleClick(item)} name="[date]" ref="activity" />
+							<input className="input-block__select" type="radio" onClick={(e) => this.handleClick(item)} name="[date]" ref="activity" />
 							<label>
 							{item.activity}<br/>
 							Starttid: {item.startDate}<br/>
@@ -166,28 +165,39 @@ class App extends Component {
 						</li>
 					))}
 					
-					</ul >
+					</ul>
 					<div className="input-block">
 					<label >
-						<input className="input-block_item" type="text" value={this.state.name} onChange={this.inputData} placeholder="Namn"
+						<input className="input-block__item" type="text" value={this.state.name} onChange={this.inputData} placeholder="Namn"
 						ref="name1"/>
 					</label>
 					<br/>
 					<label>
-						<input className="input-block_item" type="text" value={this.state.email} onChange={this.inputData} placeholder="E-mail"
+						<input className="input-block__item" type="text" value={this.state.email} onChange={this.inputData} placeholder="E-mail"
 						ref="email1"/>
 					</label>
 					</div>
-					<input className="input-block_confirm" type="submit" value="Bekräfta" />
+					<input className="input-block__confirm" type="submit" value="Bekräfta" />
+
 				</form>
 				
-		</div>
-				
+				{/* Ej färdig sökfunktion */}
+				{/* <div className="search-block">
+					<form className="">
+						<input className="input-block__search" type="text" onChange={this.handleSearch} placeholder="Search..." />
+						<input className="input-block__search-confirm" type="submit" value="Sök" /> 
+							<ul>
+
+							</ul>
+					</form>	
+				</div> */}
+		</div>		
 				</>
     );
 	}
-
+	
 }
+	
 }
 
 export default App;

@@ -1,4 +1,6 @@
 body{
+	margin:0;
+	padding:0;
 	background-color:rgb(105, 156, 159, 0.3)
 }
 
@@ -6,18 +8,36 @@ body{
 	text-align: center;
 }
 
-.list-block{
-	display:flex;
-	flex-wrap:wrap;
-	position: inherit;
+.header-block__title{
+	font-family: 'Roboto', sans-serif;
+}
+
+.booking-block__form{
 	width:100%;
 }
 
+@media screen and (max-width: 300) {
+.list-block{
+	display:flex;
+	flex-direction:column;
+	text-align: center;
+	width:80%;	
+}
+}
+@media screen and (min-width: 500) {
+	.list-block{
+		display:flex;
+		flex-wrap:wrap;
+		width: 100%;
+}
+}
+
+
 .list-block_item{
 	list-style:none;
-	margin:20px;
+	margin:3vw;
 	background-color: rgb(255, 255, 255);
-	padding:10px;
+	padding:2vw;
 	border-radius: 20px;
 	font-family: 'Roboto', sans-serif;
 }
@@ -26,58 +46,58 @@ body{
 	text-align: center;
 }
 
+.input-block__item{
+	margin:1vw;
+	border-radius:5px;
+	border-style:none;
+	padding:1vw;
+}
+
 .input-block_select{
 	background-color: #7880ab;
 	color:#ffffff;
 	border-radius:10px;
 }
 
-.header-block_text{
-	text-align: center;
-	margin-bottom:20px;
-	font-family: 'Roboto', sans-serif;
-}
 
-.booking-form_block{
-	width:80%;
-}
-
-.bookingInput{
-	width:100%;
-	text-align: center;
-}
-
-@media screen and (max-width: 300) {
-	.bookingSection{
+	.booking-form-block__select{
 		display: flex;
 		flex-direction:column;
-		width: 50%;
-		margin:auto;
+		width: 90%;
 		text-align: center;
 	}
-}
 
 
-	.input-block_confirm{
+	.input-block__confirm{
 		background: #49bc4b;
 		color:#ffffff;
 		font-size: 20px;
-		padding:20px;
-		border-radius: 20px;
-		margin-top:20px;
-		margin-left:35%;
+		padding:2vw;
+		border-radius: 15px;
+		margin-top:15px;
 		text-align: center;
+		width: 25%;
+		margin:auto;
 	}	
 
 
-.header-block_title{
-	font-family: 'Roboto', sans-serif;
+
+
+/* Ej färdig sökfunktion */
+/* .search-block{
+	text-align: center;
 }
 
-label{
-	font-family: 'Roboto', sans-serif;
+.input-block__search-confirm{
+	background: #69a599;
+	color:#ffffff;
+	margin-top:20px;
+	text-align: center;
+} */
 
-}
+
+
+
 
 
 
