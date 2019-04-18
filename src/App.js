@@ -19,7 +19,7 @@ class App extends Component {
 			this.handleClick = this.handleClick.bind(this);
 			this.handleChange = this.handleChange.bind(this);
 			this.handleSubmit = this.handleSubmit.bind(this);
-			this.handleSearch = this.handleChange.bind(this);
+			// this.handleSearch = this.handleSearch.bind(this);
 			this.inputData = this.inputData.bind(this);
 
 			// kopplar databas
@@ -55,8 +55,6 @@ class App extends Component {
 		
 		// hämtar klick för mötes knappar och skriver ut text i knappar
 		handleClick(item){
-			// console.log(e.target.innerHTML);
-			// alert('Du har valt ett möte');
 			const date = item;
 			this.setState({date});
 		}
@@ -87,7 +85,6 @@ class App extends Component {
 					}
 
 				});
-				// console.log(meetings)
 				this.setState({
 					isLoaded:true,
 					items: meetings,
