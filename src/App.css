@@ -16,22 +16,21 @@ body{
 	width:100%;
 }
 
-@media screen and (max-width: 300) {
-.list-block{
+ @media screen and (max-width: 300px) {
+	.list-block{
 	display:flex;
 	flex-direction:column;
 	text-align: center;
-	width:80%;	
+	}
 }
-}
-@media screen and (min-width: 500) {
+
+ @media screen and (min-width: 300px) {
 	.list-block{
 		display:flex;
 		flex-wrap:wrap;
-		width: 100%;
-}
-}
-
+		margin-left:10%;
+	}
+} 
 
 .list-block_item{
 	list-style:none;
@@ -44,13 +43,18 @@ body{
 
 .input-block{
 	text-align: center;
+	display: flex;
+	flex-direction:column;
+	margin-left:30px;
 }
 
 .input-block__item{
 	margin:1vw;
+	margin-bottom:2vw;
 	border-radius:5px;
 	border-style:none;
 	padding:1vw;
+
 }
 
 .input-block_select{
@@ -61,8 +65,6 @@ body{
 
 
 	.booking-form-block__select{
-		display: flex;
-		flex-direction:column;
 		width: 90%;
 		text-align: center;
 	}
@@ -72,11 +74,8 @@ body{
 		background: #49bc4b;
 		color:#ffffff;
 		font-size: 20px;
-		padding:2vw;
+		padding:3vw;
 		border-radius: 15px;
-		margin-top:15px;
-		text-align: center;
-		width: 25%;
 		margin:auto;
 	}	
 

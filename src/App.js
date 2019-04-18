@@ -167,18 +167,18 @@ class App extends Component {
 					
 					</ul>
 					<div className="input-block">
-					<label >
-						<input className="input-block__item" type="text" value={this.state.name} onChange={this.inputData} placeholder="Namn"
-						ref="name1"/>
-					</label>
-					<br/>
-					<label>
-						<input className="input-block__item" type="text" value={this.state.email} onChange={this.inputData} placeholder="E-mail"
-						ref="email1"/>
-					</label>
+						<label >
+							<input className="input-block__item" type="text" value={this.state.name} onChange={this.inputData} placeholder="Namn"
+							ref="name1"/>
+						</label>
+						<br/>
+						<label>
+							<input className="input-block__item" type="text" value={this.state.email} onChange={this.inputData} placeholder="E-mail"
+							ref="email1"/>
+						</label>
+						
+						<input className="input-block__confirm" type="submit" value="Bekräfta" />
 					</div>
-					<input className="input-block__confirm" type="submit" value="Bekräfta" />
-
 				</form>
 				
 				{/* Ej färdig sökfunktion */}
